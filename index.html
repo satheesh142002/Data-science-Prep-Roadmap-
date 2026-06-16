@@ -7,7 +7,7 @@
 <style>
 :root{--bg:#eef4ff;--panel:#ffffff;--panel2:#f8fbff;--text:#172033;--muted:#5f6b85;--primary:#2f6bff;--accent:#0ea5e9;--border:#dbe5f7;--shadow:0 18px 45px rgba(30,58,138,.12);--radius:22px}
 *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--text);background:radial-gradient(circle at top left,#dbeafe 0,#eef4ff 30%,#f8fbff 100%);line-height:1.6}
-.container{max-width:1280px;margin:0 auto;padding:24px 18px 64px}.hero{background:linear-gradient(135deg,var(--panel),#f7fbff);border:1px solid var(--border);border-radius:28px;padding:28px;box-shadow:var(--shadow);position:sticky;top:10px;z-index:5;backdrop-filter:blur(10px)}
+.container{max-width:1280px;margin:0 auto;padding:24px 18px 64px}.hero{background:linear-gradient(135deg,var(--panel),#f7fbff);border:1px solid var(--border);border-radius:28px;padding:28px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
 .hero h1{margin:0 0 8px;font-size:clamp(28px,4vw,46px)}.hero p{margin:0;color:var(--muted);max-width:980px;font-size:1.02rem}
 .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:end;margin-top:18px}.panel{background:linear-gradient(180deg,var(--panel2),#fff);border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:0 8px 20px rgba(15,23,42,.05)}
 .progress-wrap{height:14px;border-radius:999px;background:#e9eefc;overflow:hidden}.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width .35s ease}.progress-meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.92rem;margin-top:10px;flex-wrap:wrap}
@@ -18,21 +18,21 @@
 .badge{display:inline-flex;align-items:center;font-size:.8rem;font-weight:700;border-radius:999px;padding:6px 10px;margin-bottom:12px}.core{background:#e0f2fe;color:#0369a1}.adv{background:#ede9fe;color:#6d28d9}
 .image-box{margin:12px 0;border-radius:18px;overflow:hidden;border:1px solid #edf2ff;background:#fff}.image-box img{width:100%;display:block}.image-box .caption{padding:10px 12px;font-size:.9rem;color:var(--muted)}
 .subhead{margin:14px 0 8px;font-size:.93rem;font-weight:700;color:#334155}.step{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid #edf2ff;border-radius:14px;background:linear-gradient(180deg,#fbfdff,#f8fbff);margin-bottom:10px;cursor:pointer}.step input{margin-top:4px;transform:scale(1.06)}.step span{flex:1}.step.done span{text-decoration:line-through;color:#9ca3af}
-.footer{margin-top:18px;color:var(--muted);text-align:center;font-size:.92rem}@media (max-width: 980px){.hero-grid,.layout{grid-template-columns:1fr}.hero{position:static}}
+.footer{margin-top:18px;color:var(--muted);text-align:center;font-size:.92rem}@media (max-width: 980px){.hero-grid,.layout{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="container">
 <section class="hero">
 <h1>Data Science Roadmap Book</h1>
-<p>Detailed descriptions, examples, sample graphs, formulas, and interactive checklists are all included so each topic reads like a chapter.</p>
+<p>Detailed descriptions, examples, sample graphs, formulas, and interactive checklists are included so each topic feels like a chapter.</p>
 <div class="hero-grid">
 <div class="panel">
 <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
 <div class="progress-meta"><span id="progressText">0% complete</span><span id="stepText">0 of 0 steps done</span></div>
 <div class="chips"><span class="chip">Math</span><span class="chip">Graphs</span><span class="chip">Stats</span><span class="chip">ML</span><span class="chip">Examples</span></div>
 </div>
-<div class="panel"><strong style="display:block;margin-bottom:8px;">How to use</strong><div style="color:var(--muted);font-size:.94rem">Read the chapter description, study the examples, then check the subtopics you understand.</div></div>
+<div class="panel"><strong style="display:block;margin-bottom:8px;">How to use</strong><div style="color:var(--muted);font-size:.94rem">Read the chapter explanation, study the examples, then check off the subtopics you understand.</div></div>
 </div>
 </section>
 <div class="toolbar"><button class="btn btn-primary" onclick="resetAll()">Reset checklist</button></div>
@@ -43,7 +43,7 @@
 </div>
 <script>
 const imageMap={
- 'Statistics':'image:10','Graphical statistics':'image:10','Histogram':'image:10','Scatter plot':'image:11','Binary tree':'image:12','Trees':'image:16','Decision trees':'image:13','Random forests':'image:13'
+  'Statistics':'image:10','Graphical statistics':'image:10','Histogram':'image:10','Scatter plot':'image:11','Binary tree':'image:12','Trees':'image:16','Decision trees':'image:13','Random forests':'image:13'
 };
 const roadmap=[
 {title:'1. Math Foundations',tag:'Core',cls:'core',desc:'This chapter covers the mathematical language used everywhere else. You need it for limits, derivatives, integrals, and series. It is the base for all advanced calculation questions.',example:'Example: If a function is increasing near x = 2, its derivative around that point is positive.',sections:[['Limits',['One-sided limits','Continuity and discontinuity','Limit laws']],['Derivatives',['Product, quotient, chain rule','Implicit differentiation','Critical points and monotonicity']],['Integrals',['Substitution','Definite integral meaning','Area under curves']],['Series',['Geometric series','Convergence test idea','Power series basics']]]},
@@ -60,12 +60,12 @@ const roadmap=[
 ];
 function chapterImage(title){for(const k in imageMap){if(title.includes(k)) return imageMap[k];}return null}
 const cardsEl=document.getElementById('cards');
-function render(){cardsEl.innerHTML=roadmap.map((m,mi)=>`<div class="card"><div class="badge ${m.cls}">${m.tag}</div><h2>${m.title}</h2><p class="desc">${m.desc}</p><div class="chapter">${m.example}</div>${chapterImage(m.title)?`<div class="image-box"><img src="${chapterImage(m.title)}" alt="${m.title}" /><div class="caption">A visual example for ${m.title.toLowerCase()}.</div></div>`:''}${m.sections.map((sec,si)=>`<div class="subhead">${sec[0]}</div><div class="small">Sample: ${sampleFor(sec[0])}</div><ul>${sec[1].map((s,sti)=>`<li class="step" onclick="toggleCheck('m${mi}s${si}i${sti}')"><input type="checkbox" id="m${mi}s${si}i${sti}" onchange="updateProgress()" /><span id="label-m${mi}s${si}i${sti}">${s}</span></li>`).join('')}</ul>`).join('')}</div>`).join('');}
 function sampleFor(topic){const s={'One-sided limits':'lim x→2+ f(x) and lim x→2- f(x) may differ.','Product, quotient, chain rule':'If f(x)=x^2 and g(x)=sin x, then (fg)\' uses both rules.','Substitution':'Use u=x^2 when the integrand contains 2x.','Geometric series':'1 + x + x^2 + ... converges if |x|<1.','Consistency':'A system can have no solution, one solution, or infinitely many.','Matrix multiplication':'AB is defined when inner dimensions match.','Characteristic polynomial':'Solve det(A-λI)=0.','Span and basis':'Two independent vectors can form a basis of a plane.','Gradient vector':'∇g points in the direction of steepest increase.','Distance':'Distance between (0,0) and (3,4) is 5.','Helix equations':'x=4cos t, y=4sin t, z=3t.','Arc length idea':'Length is found by integrating speed.','Cross-sections':'A circle cross-section often gives area πr^2.','Separable equations':'dy/dx = xy can be written as dy/y = x dx.','Linear ODEs':'Use an integrating factor for y\'+py=q.','Start value fixes constant':'If y(0)=2, substitute x=0 to find C.','Numbers':'Integer, float, and complex examples.','if/else':'Check whether x is positive before printing.','for loops':'Loop over items in a list.','while loops':'Repeat until a counter reaches a limit.','Base case':'Stop recursion when n<=1.','Stack':'Last in, first out.','Binary search':'Repeatedly cut a sorted array in half.','Big-O':'O(n log n) grows faster than O(n), slower than O(n^2).','AND / OR / NOT':'True AND False is false.','Candidate key':'A column or set of columns that uniquely identifies rows.','Sum':'Totals can be combined across branches.','Regular language':'Can be recognized by finite memory.','Halting intuition':'Some programs can never be proven to stop in general.','Descriptive statistics':'Mean tells center, variance tells spread.','Histogram':'Useful for seeing skew in exam scores.','Pearson r':'Values near 1 or -1 show strong linear relation.','Null hypothesis':'H0 often says no difference.','P(A|B)':'If a patient is selected, what is the chance they are a swimmer?','E[X]':'Average value over many trials.','Decision trees':'Split by a feature threshold.','Random forests':'Combine many trees to reduce variance.','Validation':'Use test data to estimate real performance.'};return s[topic]||'Short example helps connect the idea to the formula.'}
+function render(){cardsEl.innerHTML=roadmap.map((m,mi)=>`<div class="card"><div class="badge ${m.cls}">${m.tag}</div><h2>${m.title}</h2><p class="desc">${m.desc}</p><div class="chapter">${m.example}</div>${chapterImage(m.title)?`<div class="image-box"><img src="${chapterImage(m.title)}" alt="${m.title}" /><div class="caption">A visual example for ${m.title.toLowerCase()}.</div></div>`:''}${m.sections.map((sec,si)=>`<div class="subhead">${sec[0]}</div><div class="small">Sample: ${sampleFor(sec[0])}</div><ul>${sec[1].map((s,sti)=>`<li class="step" onclick="toggleCheck('m${mi}s${si}i${sti}')"><input type="checkbox" id="m${mi}s${si}i${sti}" onchange="updateProgress()" /><span id="label-m${mi}s${si}i${sti}">${s}</span></li>`).join('')}</ul>`).join('')}</div>`).join('');}
 function updateProgress(){const checks=[...document.querySelectorAll('input[type="checkbox"]')];const total=checks.length;const done=checks.filter(c=>c.checked).length;const percent=total?Math.round((done/total)*100):0;document.getElementById('progressBar').style.width=`${percent}%`;document.getElementById('progressText').textContent=`${percent}% complete`;document.getElementById('stepText').textContent=`${done} of ${total} steps done`;checks.forEach(cb=>{const label=document.getElementById(`label-${cb.id}`);const row=cb.closest('.step');if(label) label.classList.toggle('done',cb.checked);if(row) row.classList.toggle('done',cb.checked);});}
 function toggleCheck(id){const cb=document.getElementById(id);cb.checked=!cb.checked;updateProgress();}
 function resetAll(){document.querySelectorAll('input[type="checkbox"]').forEach(cb=>cb.checked=false);updateProgress();}
-render(); updateProgress();
+render();updateProgress();
 </script>
 </body>
 </html>
